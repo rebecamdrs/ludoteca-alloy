@@ -21,7 +21,7 @@ Este repositório contém a especificação em Alloy do tema **"Sistema de Parti
 ```
 ludoteca-alloy/
 ├── README.md
-├── Projeto-GrupoY-Especificacao.als
+├── Projeto-GrupoD-Especificacao.als
 └── testes/
     └── cenarios-experimentais.als
 ```
