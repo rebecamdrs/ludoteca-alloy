@@ -25,8 +25,8 @@ sig Horario {}
 fact SemConflitoDeHorarioParaJogador {
   all j: Jogador |
     all disj p1, p2: Partida |
-      (j in p1.participantes + p1.organizador and
-       j in p2.participantes + p2.organizador)
+      (j in p1.participantes and
+       j in p2.participantes)
       implies p1.horario != p2.horario
 }
 
