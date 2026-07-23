@@ -1,3 +1,4 @@
+module Projeto_GrupoD_Especificacao
 open util/integer
 
 sig Partida {
