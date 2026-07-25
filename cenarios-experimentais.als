@@ -1,32 +1,40 @@
 module Cenarios_Experimentais
 open Projeto_GrupoD_Especificacao
 
-assert TestPartidasOrganizadas{
-	all j : Jogador |
-		all p : Partida |
-			(p in partidasOrganizadas[j]) iff (p.organizador = j)
+assert TestPartidasOrganizadas {
+    all j : Jogador |
+        all p : Partida |
+            (p in partidasOrganizadas[j]) iff (p.organizador = j)
 }
-
 
 pred CenarioPartidasOrganizadas {
-	some j: Jogador |
-		some p: Partida |
-			p.organizador = j and
-			p in partidasOrganizadas[j]
+    some j: Jogador |
+        some p: Partida |
+            p.organizador = j and
+            p in partidasOrganizadas[j]
 }
 
-
-assert TestPartidasComoParticipante{
-	all j: Jogador |
-		all p: Partida |
-			(p in partidasComoParticipante[j]) iff ( j in p.participantes and p.organizador != j)
+assert TestPartidasComoParticipante {
+    all j: Jogador |
+        all p: Partida |
+            (p in partidasComoParticipante[j]) iff (j in p.participantes and p.organizador != j)
 }
-check  TestPartidasComoParticipante for 5
+check TestPartidasComoParticipante for 5
 
-pred CenarioPartidasComoParticipante{
-	some j: Jogador |
-		some p: Partida |
-			j in p.participantes and p.organizador != j and p in partidasComoParticipante[j]
+pred CenarioPartidasComoParticipante {
+    some j: Jogador |
+        some p: Partida |
+            j in p.participantes and p.organizador != j and p in partidasComoParticipante[j]
 }
-run  CenarioPartidasComoParticipante  for 5
+run CenarioPartidasComoParticipante for 5
+
+pred CenarioJogaramJuntos {
+    some j1, j2: Jogador | jogaramJuntos[j1, j2]
+}
+run CenarioJogaramJuntos for 5
+
+assert TestSimetriaJogaramJuntos {
+    all j1, j2: Jogador | jogaramJuntos[j1, j2] => jogaramJuntos[j2, j1]
+}
+check TestSimetriaJogaramJuntos for 5
 
