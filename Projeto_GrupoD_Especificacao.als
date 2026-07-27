@@ -37,7 +37,7 @@ fact SemConflitoDeMesa {
 
 fact QuantidadeDeParticipantes {
   all p: Partida |
-    #p.participantes >= 2 and #p.participantes <= 6
+    #p.participantes >= 2 and #p.participantes <= 5
 }
 
 fact OrganizadorEhParticipante {
@@ -80,3 +80,7 @@ pred CenarioExemplo {
     some Partida
 }
 run CenarioExemplo for 5
+
+pred PartidaCheia[p: Partida] {
+    #p.participantes = 5
+}
