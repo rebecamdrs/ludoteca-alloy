@@ -38,3 +38,17 @@ assert TestSimetriaJogaramJuntos {
 }
 check TestSimetriaJogaramJuntos for 5
 
+assert NenhumaPartidaSuperlotada {
+    all p: Partida | not (#p.participantes > 5)
+}
+check NenhumaPartidaSuperlotada for 5
+
+assert TestMaximoParticipantes {
+    all p: Partida | #p.participantes <= 5
+}
+check TestMaximoParticipantes for 5
+
+pred CenarioPartidaCheia {
+    some p: Partida | PartidaCheia[p]
+}
+run CenarioPartidaCheia for 5
