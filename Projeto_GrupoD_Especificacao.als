@@ -87,7 +87,7 @@ fun partidasComoParticipante[j: Jogador]: set Partida {
 }
 
 
-// PREDICADOS
+-- PREDICADOS
 
 -- Verifica se dois jogadores participaram da mesma partida.
 pred jogaramJuntos[j1, j2: Jogador] {
