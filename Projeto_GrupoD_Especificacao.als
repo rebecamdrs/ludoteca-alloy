@@ -103,3 +103,4 @@ check PartidasSimultaneasIsoladas for 5
 pred CenarioExemplo {
     some Partida
 }
+run CenarioExemplo for 5
