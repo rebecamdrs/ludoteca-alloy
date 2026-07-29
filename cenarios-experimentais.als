@@ -59,6 +59,25 @@ assert TestSimetriaJogaramJuntos {
 
 check TestSimetriaJogaramJuntos for 5
 
+
+-- TESTES DE CAPACIDADE DE PARTICIPANTES (LIMITE DE 6)
+
+-- Garante que nenhuma partida pode ultrapassar o limite de 6 participantes.
+assert NenhumaPartidaSuperlotada {
+    all p: Partida | not (#p.participantes > 6)
+}
+
+check NenhumaPartidaSuperlotada for 5
+
+
+-- Verifica se todas as partidas respeitam a regra de no máximo 6 participantes.
+assert TestMaximoParticipantes {
+    all p: Partida | #p.participantes <= 6
+}
+
+check TestMaximoParticipantes for 5
+
+
 -- Gera um cenário em que existe uma partida cheia (com 6 participantes).
 pred CenarioPartidaCheia {
     some p: Partida | PartidaCheia[p]
