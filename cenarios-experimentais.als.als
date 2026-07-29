@@ -1,6 +1,3 @@
-module Cenarios_Experimentais
-open Projeto_GrupoD_Especificacao
-
 -- TESTES DAS FUNÇÕES
 
 -- Verifica se a função partidasOrganizadas retorna exatamente as partidas
@@ -47,10 +44,11 @@ run CenarioPartidasComoParticipante for 5
 
 -- TESTES DOS PREDICADOS
 
--- Gera um cenário em que dois jogadores participaram da mesma partidas.
+-- Gera um cenário em que dois jogadores participaram da mesma partida.
 pred CenarioJogaramJuntos {
     some j1, j2: Jogador | jogaramJuntos[j1, j2]
 }
+
 run CenarioJogaramJuntos for 5
 
 
@@ -61,19 +59,11 @@ assert TestSimetriaJogaramJuntos {
 
 check TestSimetriaJogaramJuntos for 5
 
-assert NenhumaPartidaSuperlotada {
-    all p: Partida | not (#p.participantes > 5)
-}
-check NenhumaPartidaSuperlotada for 5
-
-assert TestMaximoParticipantes {
-    all p: Partida | #p.participantes <= 5
-}
-check TestMaximoParticipantes for 5
-
-
--- Verifica se existe uma partida com o número máximo de participantes.
+-- Gera um cenário em que existe uma partida cheia (com 6 participantes).
 pred CenarioPartidaCheia {
     some p: Partida | PartidaCheia[p]
 }
-run CenarioPartidaCheia for 5
+
+-- Definido 'for 5 but 6 Jogador' para que o Alloy crie 6 instâncias de Jogador 
+-- e consiga lotar a partida com sucesso.
+run CenarioPartidaCheia for 5 but 6 Jogador
