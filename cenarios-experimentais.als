@@ -1,6 +1,3 @@
-module Cenarios_Experimentais
-open Projeto_GrupoD_Especificacao
-
 -- TESTES DAS FUNÇÕES
 
 -- Verifica se a função partidasOrganizadas retorna exatamente as partidas
